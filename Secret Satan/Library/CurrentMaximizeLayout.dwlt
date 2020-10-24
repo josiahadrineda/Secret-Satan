@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1280
     height: 891
-  m_MinSize: {x: 883, y: 494}
-  m_MaxSize: {x: 16008, y: 14044}
+  m_MinSize: {x: 879, y: 494}
+  m_MaxSize: {x: 16004, y: 14044}
   vertical: 0
-  controlID: 53711
+  controlID: 111831
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -127,10 +127,10 @@ MonoBehaviour:
     y: 0
     width: 1003
     height: 891
-  m_MinSize: {x: 608, y: 494}
-  m_MaxSize: {x: 12008, y: 14044}
+  m_MinSize: {x: 604, y: 494}
+  m_MaxSize: {x: 12004, y: 14044}
   vertical: 1
-  controlID: 53633
+  controlID: 111832
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -153,10 +153,10 @@ MonoBehaviour:
     y: 0
     width: 1003
     height: 615
-  m_MinSize: {x: 608, y: 222}
-  m_MaxSize: {x: 12008, y: 4022}
+  m_MinSize: {x: 604, y: 222}
+  m_MaxSize: {x: 12004, y: 4022}
   vertical: 0
-  controlID: 53634
+  controlID: 111833
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,23 +212,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7225ffff
-      m_LastClickedID: -55950
-      m_ExpandedIDs: 5c69ffffcca8ffff8ce9ffff66eeffff72fbffff963100009e310000
+      m_SelectedIDs: 526bfeff
+      m_LastClickedID: -103598
+      m_ExpandedIDs: 5c6bfeffc013ffffa215ffffcca8ffffb8eaffff66eeffff72fbffff963100009e310000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Card Template
+        m_OriginalName: Card Template
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -103630
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -301,9 +301,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.4355215, y: -0.43205732, z: 48.32422}
+    m_Target: {x: -0.5860381, y: -2.2318172, z: 46.640625}
     speed: 2
-    m_Value: {x: 1.4355215, y: -0.43205732, z: 48.32422}
+    m_Value: {x: -0.5860381, y: -2.2318172, z: 46.640625}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -336,9 +336,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.733626
+    m_Target: 9.313107
     speed: 2
-    m_Value: 10.733626
+    m_Value: 9.313107
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -482,11 +482,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scriptable Objects
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scriptable Objects
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Josiah Adrineda\Documents\GitHub\Secret-Satan\Secret
     Satan
@@ -494,8 +494,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3c2e0000
-    m_LastClickedID: 11836
+    m_SelectedIDs: 942d0000
+    m_LastClickedID: 11668
     m_ExpandedIDs: 000000003a2d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -549,8 +549,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7225ffff
-    m_LastClickedInstanceID: -55950
+    m_SelectedInstanceIDs: 526bfeff
+    m_LastClickedInstanceID: -103598
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -568,7 +568,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
+      m_ClientGUIView: {fileID: 14}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

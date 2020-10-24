@@ -14,11 +14,11 @@ public class RotateOrder : MonoBehaviour
         
         if (90 < yRot && yRot < 270)
         {
-            frontCoverCanvas.sortingOrder = 2;
+            frontCoverCanvas.overrideSorting = true;
         }
         else
         {
-            frontCoverCanvas.sortingOrder = 0;
+            frontCoverCanvas.overrideSorting = false;
         }
     }
 }
