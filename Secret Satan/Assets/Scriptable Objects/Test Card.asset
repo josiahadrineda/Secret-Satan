@@ -17,3 +17,4 @@ MonoBehaviour:
   description: This is but a simple test!
   characterType: Secondary character cannot receive damage.
   artwork: {fileID: 21300000, guid: 25ee79ce7eb9bd34ab506d38c2a9944e, type: 3}
+  id: 0
