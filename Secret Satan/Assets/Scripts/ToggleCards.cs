@@ -24,8 +24,8 @@ public class ToggleCards : MonoBehaviour
     void OnMouseDown()
     {
         thoughtText.text = "Perhaps we should investigate a little further...";
-        optionsTrigger.gameObject.SetActive(false);
-        
+        optionsTrigger.GetComponent<BoxCollider2D>().enabled = false;
+
         foreach (GameObject layer in layers)
         {
             foreach (Transform item in layer.transform)
@@ -40,5 +40,7 @@ public class ToggleCards : MonoBehaviour
 
         investigatePanelAnimator.SetBool("ready", true);
         investigatePanelAnimator.SetBool("reverseReady", false);
+
+        Reputation.allowSelection = true;
     }
 }

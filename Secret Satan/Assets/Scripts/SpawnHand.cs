@@ -7,18 +7,63 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Runtime.Versioning;
 
 public class SpawnHand : MonoBehaviour
 {
-    public int numCards = 3;
+    public int numCards;
+    public GameObject[] cardPrefabs;
+
     public Canvas canvas;
-    public GameObject cardPrefab;
 
     public Button backButton;
 
     public GameObject[] layers = new GameObject[5];
 
     public Animator investigatePanelAnimator;
+
+    // Use this for initialization
+    public void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            numCards = 1;
+            cardPrefabs = new GameObject[numCards];
+            cardPrefabs[0] = Resources.Load<GameObject>("Prefabs/Level 1/1_1");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 2")
+        {
+            numCards = 1;
+            cardPrefabs = new GameObject[numCards];
+            cardPrefabs[0] = Resources.Load<GameObject>("Prefabs/Level 2/2_1");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 3")
+        {
+            numCards = 2;
+            cardPrefabs = new GameObject[numCards];
+            cardPrefabs[0] = Resources.Load<GameObject>("Prefabs/Level 3/3_1");
+            cardPrefabs[1] = Resources.Load<GameObject>("Prefabs/Level 3/3_2");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 4")
+        {
+            numCards = 3;
+            cardPrefabs = new GameObject[numCards];
+            cardPrefabs[0] = Resources.Load<GameObject>("Prefabs/Level 4/4_1");
+            cardPrefabs[1] = Resources.Load<GameObject>("Prefabs/Level 4/4_2");
+            cardPrefabs[2] = Resources.Load<GameObject>("Prefabs/Level 4/4_3");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level 5")
+        {
+            numCards = 5;
+            cardPrefabs = new GameObject[numCards];
+            cardPrefabs[0] = Resources.Load<GameObject>("Prefabs/Level 5/5_1");
+            cardPrefabs[1] = Resources.Load<GameObject>("Prefabs/Level 5/5_2");
+            cardPrefabs[2] = Resources.Load<GameObject>("Prefabs/Level 5/5_3");
+            cardPrefabs[3] = Resources.Load<GameObject>("Prefabs/Level 5/5_4");
+            cardPrefabs[4] = Resources.Load<GameObject>("Prefabs/Level 5/5_5");
+        }
+    }
 
     public void GenerateHand()
     {
@@ -34,8 +79,11 @@ public class SpawnHand : MonoBehaviour
             currX += step;
         }
 
-        foreach (float x in xPos)
+        for (int i = 0; i < xPos.Length; i++)
         {
+            float x = xPos[i];
+            GameObject cardPrefab = cardPrefabs[i];
+
             GameObject card = GameObject.Instantiate(cardPrefab);
             RectTransform cardTransform = card.GetComponent<RectTransform>();
             cardTransform.SetParent(canvasTransform, false);
