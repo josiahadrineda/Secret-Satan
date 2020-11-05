@@ -18,8 +18,7 @@ public class SpawnHand : MonoBehaviour
     public Canvas canvas;
 
     public Button backButton;
-
-    public GameObject[] layers = new GameObject[5];
+    public Text thoughtText;
 
     public Animator investigatePanelAnimator;
 
@@ -69,14 +68,39 @@ public class SpawnHand : MonoBehaviour
     {
         RectTransform canvasTransform = canvas.GetComponent<RectTransform>();
         float canvasWidth = canvasTransform.rect.width;
-        float step = canvasWidth / numCards;
+        float center = 0f;
+        float step = canvasWidth / 5;
         float[] xPos = new float[numCards];
 
-        float currX = (-canvasWidth / 2) + (step / 2);
-        for (int i = 0; i < numCards; i++)
+        int centerInd = (int) Math.Floor((double) (numCards / 2));
+        if (numCards % 2 == 0)
         {
-            xPos[i] = currX;
-            currX += step;
+            xPos[centerInd] = center + (step / 2);
+            xPos[centerInd - 1] = center - (step / 2);
+
+            for (int i = centerInd + 1; i < numCards; i++)
+            {
+                xPos[i] = xPos[i - 1] + step;
+            }
+
+            for (int i = centerInd - 2; i >= 0; i--)
+            {
+                xPos[i] = xPos[i + 1] - step;
+            }
+        }
+        else
+        {
+            xPos[centerInd] = center;
+
+            for (int i = centerInd + 1; i < numCards; i++)
+            {
+                xPos[i] = xPos[i - 1] + step;
+            }
+
+            for (int i = centerInd - 1; i >= 0; i--)
+            {
+                xPos[i] = xPos[i + 1] - step;
+            }
         }
 
         for (int i = 0; i < xPos.Length; i++)
@@ -105,27 +129,10 @@ public class SpawnHand : MonoBehaviour
             }
         }
 
-        foreach (GameObject layer in layers)
-        {
-            foreach (Transform item in layer.transform)
-            {
-                GameObject childItem = item.gameObject;
-                if (childItem.GetComponent<PolygonCollider2D>() != null)
-                {
-                    childItem.GetComponent<PolygonCollider2D>().enabled = true;
-                }
-            }
-        }
-
         investigatePanelAnimator.SetBool("reverseReady", true);
         investigatePanelAnimator.SetBool("ready", false);
 
         backButton.gameObject.SetActive(false);
-    }
-
-    // Future Update: Parallax on mouse hover
-    void Update()
-    {
-
+        thoughtText.text = "What gift would really give my next victim a scare...?";
     }
 }

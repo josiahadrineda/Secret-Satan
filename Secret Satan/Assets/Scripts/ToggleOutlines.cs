@@ -8,14 +8,17 @@ public class ToggleOutlines : MonoBehaviour
 
     public void EnableOutlines()
     {
-        foreach (GameObject layer in layers)
+        if (!Reputation.eventInProgress && !Reputation.tutorialOutlineException)
         {
-            foreach (Transform item in layer.transform)
+            foreach (GameObject layer in layers)
             {
-                GameObject childItem = item.gameObject;
-                if (childItem.GetComponent<PolygonCollider2D>() != null)
+                foreach (Transform item in layer.transform)
                 {
-                    childItem.GetComponent<PolygonCollider2D>().enabled = true;
+                    GameObject childItem = item.gameObject;
+                    if (childItem.GetComponent<PolygonCollider2D>() != null)
+                    {
+                        childItem.GetComponent<PolygonCollider2D>().enabled = true;
+                    }
                 }
             }
         }

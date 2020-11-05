@@ -13,34 +13,53 @@ public class CardMovement : MonoBehaviour
 
     int numClicks = 0;
 
+    bool cardFlip = true;
+
+    bool onlyOnce = true;
+
     void OnMouseOver()
     {
-        flip = true;
-    }
-
-    void OnMouseExit()
-    {
-        if (numClicks == 0)
-        {
-            flip = false;
-        }
-        else
+        if (!Reputation.eventInProgress)
         {
             flip = true;
         }
     }
 
+    void OnMouseExit()
+    {
+        if (!Reputation.eventInProgress)
+        {
+            if (numClicks == 0)
+            {
+                flip = false;
+            }
+            else
+            {
+                flip = true;
+            }
+        }
+    }
+
     void OnMouseDown()
     {
-        flip = true;
-        grow = true;
-
-        numClicks++;
-        if (numClicks == 2)
+        if (!Reputation.eventInProgress)
         {
-            numClicks = 0;
-            flip = false;
-            grow = false;
+            flip = true;
+            grow = true;
+
+            numClicks++;
+            if (numClicks == 2)
+            {
+                numClicks = 0;
+                flip = false;
+                grow = false;
+            }
+
+            if (onlyOnce)
+            {
+                GameObject.Find("EventSystem").GetComponent<Events>().Invoke("IncrementNextCount", 0f);
+                onlyOnce = false;
+            }
         }
     }
 
@@ -52,11 +71,31 @@ public class CardMovement : MonoBehaviour
         {
             Quaternion newPos = Quaternion.Euler(cardTransform.rotation.x, 0, cardTransform.rotation.z);
             cardTransform.rotation = Quaternion.Slerp(cardTransform.rotation, newPos, speed * Time.deltaTime);
+
+            if (cardFlip)
+            {
+                if (Reputation.toggleSfx)
+                {
+                    GetComponent<AudioSource>().Play();
+                }
+                
+                cardFlip = false;
+            }
         }
         else
         {
             Quaternion newPos = Quaternion.Euler(cardTransform.rotation.x, 180, cardTransform.rotation.z);
             cardTransform.rotation = Quaternion.Slerp(cardTransform.rotation, newPos, speed * Time.deltaTime);
+
+            if (!cardFlip)
+            {
+                if (Reputation.toggleSfx)
+                {
+                    GetComponent<AudioSource>().Play();
+                }
+
+                cardFlip = true;
+            }
         }
 
         if (grow)

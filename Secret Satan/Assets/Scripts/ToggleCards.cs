@@ -14,6 +14,11 @@ public class ToggleCards : MonoBehaviour
 
     public Animator investigatePanelAnimator;
 
+    public UIBehavior uiBehavior;
+    public Events events;
+
+    bool onlyOnce = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,5 +47,14 @@ public class ToggleCards : MonoBehaviour
         investigatePanelAnimator.SetBool("reverseReady", false);
 
         Reputation.allowSelection = true;
+        Reputation.selectedTableOnce = true;
+
+        uiBehavior.Invoke("HideHoveredPanel", 0f);
+        
+        if (onlyOnce)
+        {
+            events.Invoke("IncrementNextCount", 0f);
+            onlyOnce = false;
+        }
     }
 }

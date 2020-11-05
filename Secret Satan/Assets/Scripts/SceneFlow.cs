@@ -10,32 +10,91 @@ public class SceneFlow : MonoBehaviour
         Application.Quit();
     }
 
+    public void GameOver()
+    {
+        Reputation.fade = false;
+        Invoke("SwapEnd", 1f);
+    }
+
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        Reputation.reputation = 3;
+        Reputation.fade = false;
+        Invoke("SwapMenu", 1f);
+    }
+
+    public void GoToDemoEnd()
+    {
+        Reputation.fade = false;
+        Invoke("SwapDemo", 1f);
     }
 
     public void LoadScene1()
     {
-        SceneManager.LoadScene("Level 1");
+        Reputation.fade = false;
+        Invoke("Swap1", 1f);
     }
 
     public void LoadScene2()
     {
-        SceneManager.LoadScene("Level 2");
+        Reputation.fade = false;
+        Invoke("Swap2", 1f);
     }
 
     public void LoadScene3()
     {
-        SceneManager.LoadScene("Level 3");
+        Reputation.fade = false;
+        Invoke("Swap3", 1f);
     }
 
     public void LoadScene4()
     {
-        SceneManager.LoadScene("Level 4");
+        Reputation.fade = false;
+        Invoke("Swap4", 1f);
     }
 
     public void LoadScene5()
+    {
+        Reputation.fade = false;
+        Invoke("Swap5", 1f);
+    }
+
+    void SwapMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    void SwapDemo()
+    {
+        SceneManager.LoadScene("DemoEnd");
+    }
+
+    void SwapEnd()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
+    void Swap1()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
+    void Swap2()
+    {
+        SceneManager.LoadScene("Level 2");
+    }
+
+    void Swap3()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
+
+    void Swap4()
+    {
+        SceneManager.LoadScene("Level 4");
+    }
+
+    void Swap5()
     {
         SceneManager.LoadScene("Level 5");
     }
