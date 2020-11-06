@@ -104,7 +104,10 @@ public class UIBehavior : MonoBehaviour
 
     public void DisplayThoughtPanel()
     {
-        thoughtPanel.gameObject.SetActive(true);
+        if (Reputation.selectedTableOnce && !Reputation.tutorialThoughtException)
+        {
+            thoughtPanel.gameObject.SetActive(true);
+        }
     }
 
     public void HideThoughtPanel()

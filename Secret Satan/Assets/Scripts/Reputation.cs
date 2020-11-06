@@ -10,6 +10,7 @@ public static class Reputation
     public static GameObject selection;
 
     public static bool eventInProgress;
+    public static bool tutorialThoughtException;
     public static bool tutorialHoveredException;
     public static bool tutorialOutlineException;
     public static bool tutorialSideTriggerException;

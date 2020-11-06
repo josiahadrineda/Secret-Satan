@@ -11,6 +11,7 @@ public class Events : MonoBehaviour
 
     public Text eventText;
     public Animator eventAnimator;
+    public AudioSource eventAudioSource;
 
     int nextCount = 0;
     bool onlyOnce = false;
@@ -23,18 +24,20 @@ public class Events : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Level 1")
         {
+            Reputation.tutorialThoughtException = true;
             Reputation.tutorialHoveredException = false;
             Reputation.tutorialOutlineException = true;
             Reputation.tutorialSideTriggerException = true;
         }
         else
         {
+            Reputation.tutorialThoughtException = false;
             Reputation.tutorialHoveredException = true;
             Reputation.tutorialOutlineException = false;
             Reputation.tutorialSideTriggerException = false;
         }
 
-        if (SceneManager.GetActiveScene().name == "Level 3")
+        if (SceneManager.GetActiveScene().name != "Level 1" && SceneManager.GetActiveScene().name != "Level 2")
         {
             Invoke("EnableAll", 0f);
         }
@@ -54,7 +57,7 @@ public class Events : MonoBehaviour
                 if (nextCount == 0)
                 {
                     eventText.text = "It's the gift-giving season.";
-                    Invoke("SlideIn", 0f);
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 1)
                 {
@@ -75,7 +78,7 @@ public class Events : MonoBehaviour
                     uiBehavior.Invoke("DisableBackButton", 0f);
 
                     eventText.text = "Let's play a round!";
-                    Invoke("SlideIn", 0f);
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 5)
                 {
@@ -92,7 +95,7 @@ public class Events : MonoBehaviour
                     Reputation.eventInProgress = true;
 
                     eventText.text = "Read the description to decipher what this person is afraid of.";
-                    Invoke("SlideIn", 0f);
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 8)
                 {
@@ -108,8 +111,9 @@ public class Events : MonoBehaviour
                 }
                 else if (nextCount == 10)
                 {
+                    Reputation.tutorialThoughtException = false;
                     eventText.text = "Objects that can be selected will glow. Use left click to pick one.";
-                    Invoke("SlideIn", 0f);
+                    Invoke("SlideIn", 0.5f);
                     uiBehavior.Invoke("DisableOptionsTrigger", 0f);
                 }
                 else if (nextCount == 11)
@@ -125,7 +129,7 @@ public class Events : MonoBehaviour
                 if (nextCount == 0)
                 {
                     eventText.text = "The options menu can be found by moving your cursor to the left edge of the screen.";
-                    Invoke("SlideIn", 0f);
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 1)
                 {
@@ -148,7 +152,7 @@ public class Events : MonoBehaviour
                     uiBehavior.Invoke("DisableBackButton", 0f);
 
                     eventText.text = "The golden card belongs to your target.";
-                    Invoke("SlideIn", 0f);
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 2)
                 {
@@ -170,44 +174,56 @@ public class Events : MonoBehaviour
             {
                 if (nextCount == 0)
                 {
-                    eventText.text = "Sometimes people aren’t entirely honest.";
-                    Invoke("SlideIn", 0f);
+                    Reputation.eventInProgress = false;
                 }
-                else if (nextCount == 1)
+                if (nextCount == 1)
                 {
-                    eventText.text = "Some people lie, while others just don’t know enough.";
+                    Reputation.eventInProgress = true;
+                    uiBehavior.Invoke("DisableBackButton", 0f);
+
+                    eventText.text = "Sometimes people aren’t entirely honest.";
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 2)
                 {
-                    eventText.text = "Find out who is telling the truth and understands our target best.";
+                    eventText.text = "Some people lie, while others just don’t know enough.";
                 }
                 else if (nextCount == 3)
                 {
+                    eventText.text = "Find out who is telling the truth and understands our target best.";
+                }
+                else if (nextCount == 4)
+                {
                     Reputation.eventInProgress = false;
 
-                    GameObject.Find("Table").GetComponent<PolygonCollider2D>().enabled = true;
+                    uiBehavior.Invoke("EnableBackButton", 0f);
                     Invoke("SlideOut", 0f);
-                    Invoke("EnableAll", 0f);
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level 5")
             {
                 if (nextCount == 0)
                 {
-                    eventText.text = "Now it's getting difficult.";
-                    Invoke("SlideIn", 0f);
+                    Reputation.eventInProgress = false;
                 }
-                else if (nextCount == 1)
+                if (nextCount == 1)
                 {
-                    eventText.text = "See if you can eliminate any cards that contradict each other.";
+                    Reputation.eventInProgress = true;
+                    uiBehavior.Invoke("DisableBackButton", 0f);
+
+                    eventText.text = "Now it’s getting difficult.";
+                    Invoke("SlideIn", 1f);
                 }
                 else if (nextCount == 2)
                 {
+                    eventText.text = "See if you can eliminate any cards that contradict each other.";
+                }
+                else if (nextCount == 3)
+                {
                     Reputation.eventInProgress = false;
 
-                    GameObject.Find("Table").GetComponent<PolygonCollider2D>().enabled = true;
+                    uiBehavior.Invoke("EnableBackButton", 0f);
                     Invoke("SlideOut", 0f);
-                    Invoke("EnableAll", 0f);
                 }
             }
 
@@ -225,12 +241,16 @@ public class Events : MonoBehaviour
     {
         eventAnimator.SetBool("allowSlideIn", true);
         eventAnimator.SetBool("allowSlideOut", false);
+
+        eventAudioSource.Play();
     }
 
     void SlideOut()
     {
         eventAnimator.SetBool("allowSlideIn", false);
         eventAnimator.SetBool("allowSlideOut", true);
+
+        eventAudioSource.Play();
     }
 
     void EnableAll()

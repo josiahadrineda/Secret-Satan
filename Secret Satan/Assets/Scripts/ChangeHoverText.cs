@@ -7,6 +7,11 @@ public class ChangeHoverText : MonoBehaviour
 {
     public Text hoveredText;
 
+    void Start()
+    {
+        Reputation.selectedTableOnce = false;
+    }
+
     void OnMouseOver()
     {
         if (gameObject.name != "Table")
