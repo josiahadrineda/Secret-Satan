@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IntroSequenc3e.unity
+    path: Assets/Scenes/IntroSequence.unity
     guid: ae25bf0451eac2548a68f4fe0c4d1b1c
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
@@ -16,16 +16,16 @@ EditorBuildSettings:
     guid: 4f7b22a7cc7a3aa4399166e9e218c3a2
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
-    guid: f1c05138b2c6d6443b33e3e7a6e54d83
+    guid: e958727e37cf3034eafe25427d03077c
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
-    guid: e32e1092172273948b0ea1eb6456aad7
+    guid: 9b3c88ec1f64e874eaeb94e868c4fb06
   - enabled: 1
     path: Assets/Scenes/Level 4.unity
-    guid: 4d90be0220076a442b69ca42938e8d9c
+    guid: cac6dbd5e1fee3d4fa6c83b6bf8623ec
   - enabled: 1
     path: Assets/Scenes/Level 5.unity
-    guid: b6cfbf27c6f0c4743b63b7f29362e75a
+    guid: 5beeb63762107bd4b8a5645cf7e75b27
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 03b9a50773524b148a2cc0bcbed35fd9
