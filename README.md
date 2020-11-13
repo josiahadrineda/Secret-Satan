@@ -1,2 +1,2 @@
 # Secret-Satan
-The mischievous matchmaking card game.
+The corrupt clue-based card game.
